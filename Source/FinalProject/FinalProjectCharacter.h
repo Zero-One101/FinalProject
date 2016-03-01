@@ -1,6 +1,7 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 #pragma once
 #include "GameFramework/Character.h"
+#include "Engine/PostProcessVolume.h"
 #include "FinalProjectCharacter.generated.h"
 
 class UInputComponent;
@@ -48,6 +49,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	class UAnimMontage* FireAnimation;
 
+	class APostProcessVolume* PostProcess;
+
 protected:
 	
 	/** Fires a projectile. */
@@ -58,6 +61,8 @@ protected:
 
 	/** Handles stafing movement, left and right */
 	void MoveRight(float Val);
+
+	void TogglePostProcess();
 
 	/**
 	 * Called via input to turn at a given rate.
