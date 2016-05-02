@@ -101,6 +101,10 @@ void AFinalProjectCharacter::TogglePostProcess()
 	{
 		PostProcess->bEnabled = !PostProcess->bEnabled;
 	}
+    else
+    {
+        GEngine->AddOnScreenDebugMessage(1, 5.0f, FColor::Blue, "Could not correct the colours. The post process could not be found.");
+    }
 }
 
 void AFinalProjectCharacter::OnFire()
