@@ -4,6 +4,7 @@
 #include "FinalProjectCharacter.h"
 #include "FinalProjectProjectile.h"
 #include "Animation/AnimInstance.h"
+#include "Engine.h"
 #include "GameFramework/InputSettings.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
@@ -50,6 +51,22 @@ AFinalProjectCharacter::AFinalProjectCharacter()
 
 //////////////////////////////////////////////////////////////////////////
 // Input
+
+void AFinalProjectCharacter::BeginPlay()
+{
+    for (TActorIterator<APostProcessVolume> AItr(GetWorld()); AItr; ++AItr)
+    {
+        PostProcess = *AItr;
+        if (PostProcess)
+        {
+            GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, "Found Post Process");
+        }
+        else
+        {
+            GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "Post Process not found!");
+        }
+    }
+}
 
 void AFinalProjectCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
@@ -186,6 +203,7 @@ void AFinalProjectCharacter::MoveForward(float Value)
 {
 	if (Value != 0.0f)
 	{
+        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, "Trying to move");
 		// add movement in that direction
 		AddMovementInput(GetActorForwardVector(), Value);
 	}

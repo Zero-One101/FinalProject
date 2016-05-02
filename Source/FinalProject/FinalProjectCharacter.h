@@ -59,7 +59,7 @@ protected:
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 
-	/** Handles stafing movement, left and right */
+	/** Handles strafing movement, left and right */
 	void MoveRight(float Val);
 
 	void TogglePostProcess();
@@ -93,6 +93,8 @@ protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
 	// End of APawn interface
+
+    virtual void BeginPlay() override;
 
 	/* 
 	 * Configures input for touchscreen devices if there is a valid touch interface for doing so 
