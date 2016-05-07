@@ -66,6 +66,8 @@ void AFinalProjectCharacter::BeginPlay()
             GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "Post Process not found!");
         }
     }
+
+    Super::BeginPlay();
 }
 
 void AFinalProjectCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
@@ -207,7 +209,6 @@ void AFinalProjectCharacter::MoveForward(float Value)
 {
 	if (Value != 0.0f)
 	{
-        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, "Trying to move");
 		// add movement in that direction
 		AddMovementInput(GetActorForwardVector(), Value);
 	}
